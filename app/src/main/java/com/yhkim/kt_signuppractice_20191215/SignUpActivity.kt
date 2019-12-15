@@ -3,6 +3,7 @@ package com.yhkim.kt_signuppractice_20191215
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -32,6 +33,10 @@ class SignUpActivity : BaseActivity() {
 //                Log.d("입력된값", s.toString())
 //            }
 //        })
+
+        birthDayTxt.setOnClickListener {
+            Toast.makeText(mContext, "생일 지정 텍스트뷰 클릭", Toast.LENGTH_SHORT).show()
+        }
 
         pwEdt.addTextChangedListener {
 
