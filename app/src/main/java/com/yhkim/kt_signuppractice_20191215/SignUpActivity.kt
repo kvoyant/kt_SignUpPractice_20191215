@@ -2,6 +2,7 @@ package com.yhkim.kt_signuppractice_20191215
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +10,30 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import com.yhkim.kt_signuppractice_20191215.adapters.AlcoholAdapter
+import com.yhkim.kt_signuppractice_20191215.datas.Alcohol
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 //SignUpActivity 로 이름 변경 shift + F6 (mac shift + fn + F6)
 class SignUpActivity : BaseActivity() {
+
+    val alcoholList = ArrayList<Alcohol>()
+    var alcoholAdapter:AlcoholAdapter? = null
+
+    fun addAlcohols() {
+        alcoholList.add(Alcohol("소주", "참이슬"))
+        alcoholList.add(Alcohol("소주", "처음처럼"))
+        alcoholList.add(Alcohol("소주", "C1"))
+        alcoholList.add(Alcohol("소주", "한라산"))
+        alcoholList.add(Alcohol("맥주", "카스"))
+        alcoholList.add(Alcohol("맥주", "하이트"))
+        alcoholList.add(Alcohol("맥주", "클라우트"))
+        alcoholList.add(Alcohol("맥주", "오비라거"))
+        alcoholList.add(Alcohol("해외맥주", "하이네켄"))
+    }
 
     var lastBack01 = 0L//변수도 리팩토링 가능 (shift + F6 (mac shift + fn + F6))
 
@@ -133,6 +152,11 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        addAlcohols()
+
+        alcoholAdapter = AlcoholAdapter(mContext, R.layout.alcohol_spinner_list_item, alcoholList)
+        alcoholSpinner.adapter = alcoholAdapter
+
     }
 
 }
