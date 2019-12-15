@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.yhkim.kt_signuppractice_20191215.R
 import com.yhkim.kt_signuppractice_20191215.datas.Alcohol
-import org.w3c.dom.Text
 
 class AlcoholAdapter (context: Context, resId:Int, list:ArrayList<Alcohol>)
     : ArrayAdapter<Alcohol>(context, resId, list) {

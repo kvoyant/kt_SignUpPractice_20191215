@@ -2,7 +2,6 @@ package com.yhkim.kt_signuppractice_20191215
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -22,18 +21,6 @@ class SignUpActivity : BaseActivity() {
 
     val alcoholList = ArrayList<Alcohol>()
     var alcoholAdapter:AlcoholAdapter? = null
-
-    fun addAlcohols() {
-        alcoholList.add(Alcohol("소주", "참이슬"))
-        alcoholList.add(Alcohol("소주", "처음처럼"))
-        alcoholList.add(Alcohol("소주", "C1"))
-        alcoholList.add(Alcohol("소주", "한라산"))
-        alcoholList.add(Alcohol("맥주", "카스"))
-        alcoholList.add(Alcohol("맥주", "하이트"))
-        alcoholList.add(Alcohol("맥주", "클라우트"))
-        alcoholList.add(Alcohol("맥주", "오비라거"))
-        alcoholList.add(Alcohol("해외맥주", "하이네켄"))
-    }
 
     var lastBack01 = 0L//변수도 리팩토링 가능 (shift + F6 (mac shift + fn + F6))
 
@@ -158,5 +145,18 @@ class SignUpActivity : BaseActivity() {
         alcoholSpinner.adapter = alcoholAdapter
 
     }
+
+    fun addAlcohols() {
+        alcoholList.add(Alcohol("소주", "참이슬"))
+        alcoholList.add(Alcohol("소주", "처음처럼"))
+        alcoholList.add(Alcohol("소주", "C1"))
+        alcoholList.add(Alcohol("소주", "한라산"))
+        alcoholList.add(Alcohol("맥주", "카스"))
+        alcoholList.add(Alcohol("맥주", "하이트"))
+        alcoholList.add(Alcohol("맥주", "클라우트"))
+        alcoholList.add(Alcohol("맥주", "오비라거"))
+        alcoholList.add(Alcohol("해외맥주", "하이네켄"))
+    }
+
 
 }
