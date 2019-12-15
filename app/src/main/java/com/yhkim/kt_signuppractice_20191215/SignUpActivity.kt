@@ -5,6 +5,9 @@ import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.text.SimpleDateFormat
@@ -25,6 +28,24 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        jobSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?
+                ,view: View?
+                ,position: Int
+                ,id: Long
+            ) {
+                if(position != 0) {
+                    Toast.makeText(mContext, jobSpinner.selectedItem.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
 
         birthTimeTxt.setOnClickListener {
             val timePickerDialog = TimePickerDialog(mContext, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
