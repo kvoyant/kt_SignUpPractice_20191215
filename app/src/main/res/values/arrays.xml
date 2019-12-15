@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jobs">
+        <item>- 선택 -</item>
+        <item>학생</item>
+        <item>생산직</item>
+        <item>자영업</item>
+        <item>강사</item>
+        <item>개발자</item>
+    </string-array>
+</resources>
