@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
@@ -13,6 +12,8 @@ import java.util.*
 class SignUpActivity : BaseActivity() {
 
     var lastBack01 = 0L//변수도 리팩토링 가능 (shift + F6 (mac shift + fn + F6))
+
+    var selectedBirthDay:Calendar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,22 @@ class SignUpActivity : BaseActivity() {
 
                 val selectedDateStr = "${year} / ${month} / ${dayOfMonth}"
                 birthDayTxt.text = selectedDateStr
+
+                selectedBirthDay?.let {
+                    Log.d("생년월일선택", "이미 선택된 값을 수정 - 다시 선택")
+                }.let {
+                    //null 이면
+                    Log.d("생년월일선택", "이미 선택된 값이 새로 생김 - 처음 선택")
+                    selectedBirthDay = Calendar.getInstance()
+//                    Q.selectedBirthDay에 담긴 날짜는 몇월 몇일? 2019년 12월 15일
+//                    이 담긴 날짜를 => 선택한 년/월/일로 대입.
+                }
+
+                selectedBirthDay?.set(Calendar.YEAR, year)//? null 이 아닐때 세팅
+                selectedBirthDay?.set(Calendar.MONTH, month)
+                selectedBirthDay?.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+//                selectedBirthDay?.set(year, month, dayOfMonth) //한줄로 다 실행
 
             }, 2019, Calendar.DECEMBER, 15)
 
