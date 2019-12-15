@@ -1,6 +1,9 @@
 package com.yhkim.kt_signuppractice_20191215
 
 import android.os.Bundle
+import android.util.Log
+import androidx.core.widget.addTextChangedListener
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 //SignUpActivity 로 이름 변경 shift + F6 (mac shift + fn + F6)
 class SignUpActivity : BaseActivity() {
@@ -15,11 +18,38 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
-        lastBack01 = 10L
+
+//        pwEdt.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//                Log.d("입력된값", s.toString())
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                Log.d("입력된값", s.toString())
+//            }
+//
+//        })
+
+        pwEdt.addTextChangedListener {
+            //결과가 it으로 들어온다
+            Log.d("입력된값", it.toString())
+            val inputStr = it.toString()
+            if(inputStr.length == 0) {
+                pwStatusTxt.text = "비밀번호가 입력되지 않았습니다."
+            }
+            else if (inputStr.length < 8) {
+                pwStatusTxt.text = "입력된 비번이 너무 짧습니다."
+            }
+            else {
+                pwStatusTxt.text = "사용해되 좋은 비밀번호 입니다."
+            }
+        }
     }
 
     override fun setValues() {
-        lastBack01 = 20L
     }
 
 }

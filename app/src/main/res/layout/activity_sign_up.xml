@@ -39,6 +39,7 @@
                 android:textSize="16sp"/>
 
             <EditText
+                android:id="@+id/pwEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -47,6 +48,7 @@
 
 
             <TextView
+                android:id="@+id/pwStatusTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
