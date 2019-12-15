@@ -1,11 +1,13 @@
 package com.yhkim.kt_signuppractice_20191215
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 //SignUpActivity 로 이름 변경 shift + F6 (mac shift + fn + F6)
@@ -23,6 +25,13 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        birthTimeTxt.setOnClickListener {
+            val timePickerDialog = TimePickerDialog(mContext, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+
+            }, 20, 5, false)//true
+            timePickerDialog.show()
+        }
 
 //        pwEdt.addTextChangedListener(object : TextWatcher {
 //            override fun afterTextChanged(s: Editable?) {
@@ -48,6 +57,7 @@ class SignUpActivity : BaseActivity() {
                 birthDayTxt.text = selectedDateStr
 
                 selectedBirthDay?.let {
+                    //null 이 아니
                     Log.d("생년월일선택", "이미 선택된 값을 수정 - 다시 선택")
                 }.let {
                     //null 이면
@@ -62,6 +72,11 @@ class SignUpActivity : BaseActivity() {
                 selectedBirthDay?.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
 //                selectedBirthDay?.set(year, month, dayOfMonth) //한줄로 다 실행
+
+//                저장된 생년월일을 SimpleDateFormat을 이욯해 출력
+                val sdf = SimpleDateFormat("yyyy년 M월 d일")
+                birthDayTxt.text = sdf.format(selectedBirthDay?.time)
+
 
             }, 2019, Calendar.DECEMBER, 15)
 
